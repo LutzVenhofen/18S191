@@ -1,5 +1,5 @@
 ### A Pluto.jl notebook ###
-# v0.11.12
+# v0.11.13
 
 using Markdown
 using InteractiveUtils
@@ -32,7 +32,7 @@ Feel free to ask questions!
 # ╔═╡ 911ccbce-ed68-11ea-3606-0384e7580d7c
 # edit the code below to set your name and kerberos ID (i.e. email without @mit.edu)
 
-student = (name = "Jazzy Doe", kerberos_id = "jazz")
+student = (name = "Lutz Venhofen", kerberos_id = "What")
 
 # press the ▶ button in the bottom right of this cell to run your edits
 # or use Shift+Enter
@@ -87,15 +87,19 @@ md"#### Exerise 1.1
 "
 
 # ╔═╡ f51333a6-eded-11ea-34e6-bfbb3a69bcb0
-random_vect = missing # replace this with your code!
+random_vect = rand(Float64, 10) # replace this with your code!
 
 # ╔═╡ cf738088-eded-11ea-2915-61735c2aa990
 md"👉 Make a function `mean` using a `for` loop, which computes the mean/average of a vector of numbers."
 
 # ╔═╡ 0ffa8354-edee-11ea-2883-9d5bfea4a236
 function mean(x)
-	
-	return missing
+	total = 0
+	for i in x
+		total += i
+	end
+	av = total/length(x)
+	return av
 end
 
 # ╔═╡ 1f104ce4-ee0e-11ea-2029-1d9c817175af
@@ -105,16 +109,25 @@ mean([1, 2, 3])
 md"👉 Define `m` to be the mean of `random_vect`."
 
 # ╔═╡ 2a391708-edee-11ea-124e-d14698171b68
-m = missing
+m = mean(random_vect)
 
 # ╔═╡ e2863d4c-edef-11ea-1d67-332ddca03cc4
 md"""👉 Write a function `demean`, which takes a vector `x` and subtracts the mean from each value in `x`."""
 
 # ╔═╡ ec5efe8c-edef-11ea-2c6f-afaaeb5bc50c
 function demean(x)
-	
-	return missing
+	m = mean(x)
+	return x .- m
 end
+
+# ╔═╡ 58686222-f35f-11ea-2c05-151efc05e7b1
+testing = random_vect
+
+# ╔═╡ 758eb1b0-f35f-11ea-0efc-bfbcd9342df8
+testing .-mean(testing)
+
+# ╔═╡ 870006b0-f35f-11ea-04ae-b3aabde1c93a
+[0 for i in 1:100]
 
 # ╔═╡ 29e10640-edf0-11ea-0398-17dbf4242de3
 md"Let's check that the mean of the `demean(random_vect)` is 0:
@@ -144,8 +157,9 @@ md"""
 
 # ╔═╡ b6b65b94-edf0-11ea-3686-fbff0ff53d08
 function create_bar()
-	
-	return missing
+	v = [0 for i in 1:100]
+	v[40:60] .= 1
+	return v
 end
 
 # ╔═╡ 22f28dae-edf2-11ea-25b5-11c369ae1253
@@ -157,8 +171,9 @@ md"""
 
 # ╔═╡ 8c19fb72-ed6c-11ea-2728-3fa9219eddc4
 function vecvec_to_matrix(vecvec)
-	
-	return missing
+	vecvec_unfolded = [vecvec[i][j] for i in 1:length(vecvec) for j in 1:length(vecvec[i])]
+	m = reshape(vecvec_unfolded, length(vecvec), length(vecvec[1]))
+	return m
 end
 
 # ╔═╡ c4761a7e-edf2-11ea-1e75-118e73dadbed
@@ -173,12 +188,41 @@ md"""
 
 # ╔═╡ 9f1c6d04-ed6c-11ea-007b-75e7e780703d
 function matrix_to_vecvec(matrix)
-	
-	return missing
+	vv = []
+	for i in 1:size(matrix)[1]
+		v = []
+		for j in 1:size(matrix)[2]
+			append!(v, matrix[i, j])
+		end
+		push!(vv, v)
+	end
+	return vv
 end
 
 # ╔═╡ 70955aca-ed6e-11ea-2330-89b4d20b1795
 matrix_to_vecvec([6 7; 8 9])
+
+# ╔═╡ 6feb71a0-f36c-11ea-3a0d-8d3add99f760
+begin
+	any_vv = []
+	push!(any_vv, [1,2])
+end
+
+# ╔═╡ e9792340-f368-11ea-340a-8da49b2d8242
+begin
+	test_m = [6 7; 8 9]
+end
+
+# ╔═╡ 667e4b90-f369-11ea-08bc-c956bcc4b706
+test_m[1,:]
+
+# ╔═╡ 8e417980-f36a-11ea-1e61-f735de19e938
+size(test_m)[1]
+
+# ╔═╡ f64cd440-f368-11ea-2957-85e63b2229e9
+for i in test_m[1]
+	println(i)
+end
 
 # ╔═╡ 5da8cbe8-eded-11ea-2e43-c5b7cc71e133
 begin
@@ -1375,6 +1419,9 @@ with_sobel_edge_detect(sobel_camera_image)
 # ╟─2b1ccaca-edee-11ea-34b0-c51659f844d0
 # ╟─e2863d4c-edef-11ea-1d67-332ddca03cc4
 # ╠═ec5efe8c-edef-11ea-2c6f-afaaeb5bc50c
+# ╠═58686222-f35f-11ea-2c05-151efc05e7b1
+# ╠═758eb1b0-f35f-11ea-0efc-bfbcd9342df8
+# ╠═870006b0-f35f-11ea-04ae-b3aabde1c93a
 # ╟─29e10640-edf0-11ea-0398-17dbf4242de3
 # ╟─6f67657e-ee1a-11ea-0c2f-3d567bcfa6ea
 # ╠═38155b5a-edf0-11ea-3e3f-7163da7433fb
@@ -1390,7 +1437,12 @@ with_sobel_edge_detect(sobel_camera_image)
 # ╟─393667ca-edf2-11ea-09c5-c5d292d5e896
 # ╠═9f1c6d04-ed6c-11ea-007b-75e7e780703d
 # ╠═70955aca-ed6e-11ea-2330-89b4d20b1795
+# ╠═6feb71a0-f36c-11ea-3a0d-8d3add99f760
 # ╟─e06b7fbc-edf2-11ea-1708-fb32599dded3
+# ╠═e9792340-f368-11ea-340a-8da49b2d8242
+# ╠═667e4b90-f369-11ea-08bc-c956bcc4b706
+# ╠═8e417980-f36a-11ea-1e61-f735de19e938
+# ╠═f64cd440-f368-11ea-2957-85e63b2229e9
 # ╟─5da8cbe8-eded-11ea-2e43-c5b7cc71e133
 # ╟─45815734-ee0a-11ea-2982-595e1fc0e7b1
 # ╟─e083b3e8-ed61-11ea-2ec9-217820b0a1b4
