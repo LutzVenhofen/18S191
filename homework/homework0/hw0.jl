@@ -1,5 +1,5 @@
 ### A Pluto.jl notebook ###
-# v0.11.8
+# v0.11.13
 
 using Markdown
 using InteractiveUtils
@@ -16,6 +16,12 @@ end
 # ╔═╡ fafae38e-e852-11ea-1208-732b4744e4c2
 md"_homework 0, version 2_"
 
+# ╔═╡ cdff6730-e785-11ea-2546-4969521b33a7
+md"""
+
+Submission by:Lutz Venhofen
+"""
+
 # ╔═╡ 7308bc54-e6cd-11ea-0eab-83f7535edf25
 # edit the code below to set your name and kerberos ID (i.e. email without @mit.edu)
 
@@ -26,12 +32,6 @@ student = (name = "Jazzy Doe", kerberos_id = "jazz")
 
 # you might need to wait until all other cells in this notebook have completed running. 
 # scroll down the page to see what's up
-
-# ╔═╡ cdff6730-e785-11ea-2546-4969521b33a7
-md"""
-
-Submission by: **_$(student.name)_** ($(student.kerberos_id)@mit.edu)
-"""
 
 # ╔═╡ a2181260-e6cd-11ea-2a69-8d9d31d1ef0e
 md"""
@@ -99,11 +99,16 @@ Write a function newton_sqrt(x) which implements the above algorithm."
 
 # ╔═╡ 4896bf0c-e754-11ea-19dc-1380bb356ab6
 function newton_sqrt(x, error_margin=0.01, a=x / 2) # a=x/2 is the default value of `a`
-	return x # this is wrong, write your code here!
+	fraction = x/a
+	if abs(fraction-a) <= error_margin
+		return a
+	else
+		return newton_sqrt(x, error_margin, (fraction+a)/2)
+	end
 end
 
 # ╔═╡ 7a01a508-e78a-11ea-11da-999d38785348
-newton_sqrt(2)
+newton_sqrt(15)
 
 # ╔═╡ 682db9f8-e7b1-11ea-3949-6b683ca8b47b
 let
@@ -182,7 +187,7 @@ end
 md"Just like the definition above, our `sierpinksi` function is _recursive_: it calls itself."
 
 # ╔═╡ 02b9c9d6-e752-11ea-0f32-91b7b6481684
-complexity = 3
+complexity = 5
 
 # ╔═╡ 1eb79812-e7b5-11ea-1c10-63b24803dd8a
 if complexity == 3 
@@ -216,7 +221,7 @@ area_sierpinski(1) = 0.??
 
 # ╔═╡ ca8d2f72-e7b6-11ea-1893-f1e6d0a20dc7
 function area_sierpinski(n)
-	return 1.0
+	return (3/4)^n
 end
 
 # ╔═╡ 71c78614-e7bc-11ea-0959-c7a91a10d481
@@ -308,7 +313,7 @@ has area **$(area_sierpinski(n))**
 
 # ╔═╡ Cell order:
 # ╟─fafae38e-e852-11ea-1208-732b4744e4c2
-# ╟─cdff6730-e785-11ea-2546-4969521b33a7
+# ╠═cdff6730-e785-11ea-2546-4969521b33a7
 # ╠═7308bc54-e6cd-11ea-0eab-83f7535edf25
 # ╟─a2181260-e6cd-11ea-2a69-8d9d31d1ef0e
 # ╟─094e39c8-e6ce-11ea-131b-07c4a1199edf
