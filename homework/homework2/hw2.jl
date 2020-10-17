@@ -73,6 +73,9 @@ Submission by: **_$(student.name)_** ($(student.kerberos_id)@mit.edu)
 # ╔═╡ 938185ec-f384-11ea-21dc-b56b7469f798
 md"_Let's create a package environment:_"
 
+# ╔═╡ 5ab27f94-0bd2-11eb-29fe-194d67235f67
+
+
 # ╔═╡ 0d144802-f319-11ea-0028-cd97a776a3d0
 #img = load(download("https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Piet_Mondriaan%2C_1930_-_Mondrian_Composition_II_in_Red%2C_Blue%2C_and_Yellow.jpg/300px-Piet_Mondriaan%2C_1930_-_Mondrian_Composition_II_in_Red%2C_Blue%2C_and_Yellow.jpg"))
 #img = load(download("https://upload.wikimedia.org/wikipedia/commons/thumb/5/5b/Hilma_af_Klint_-_Group_IX_SUW%2C_The_Swan_No._1_%2813947%29.jpg/477px-Hilma_af_Klint_-_Group_IX_SUW%2C_The_Swan_No._1_%2813947%29.jpg"))
@@ -150,6 +153,9 @@ While using `vcat` might make it easy to write the first version of our function
 👉 In `remove_in_each_row_no_vcat` below, figure out a way to avoid the use of `vcat` and modify the function to avoid it.
 """
 
+# ╔═╡ 003370de-0bd0-11eb-0a59-ef7ba2ac80a7
+[1,2,3]+[4,5,6]
+
 # ╔═╡ 37d4ea5c-f327-11ea-2cc5-e3774c232c2b
 function remove_in_each_row_no_vcat(img, column_numbers)
 	@assert size(img, 1) == length(column_numbers) # same as the number of rows
@@ -159,7 +165,9 @@ function remove_in_each_row_no_vcat(img, column_numbers)
 	for (i, j) in enumerate(column_numbers)
 		# EDIT THE FOLLOWING LINE and split it into two lines
 		# to avoid using `vcat`.
-		img′[i, :] .= vcat(img[i, 1:j-1], img[i, j+1:end])
+		img′[i, 1:j-1] = img[i, 1:j-1]
+		img′[i, j:end] = img[i, j+1:end]
+		# img′[i, :] .= vcat(img[i, 1:j-1], img[i, j+1:end])
 	end
 	img′
 end
@@ -203,7 +211,9 @@ function remove_in_each_row_views(img, column_numbers)
 	for (i, j) in enumerate(column_numbers)
 		# EDIT THE FOLLOWING LINE and split it into two lines
 		# to avoid using `vcat`.
-		img′[i, :] .= vcat(img[i, 1:j-1], img[i, j+1:end])
+		img′[i, 1:j-1] = @view img[i, 1:j-1]
+		img′[i, j:end] = @view img[i, j+1:end]
+		# img′[i, :] .= vcat(img[i, 1:j-1], img[i, j+1:end])
 	end
 	img′
 end
@@ -328,10 +338,33 @@ md"""
 # ╔═╡ 2f9cbea8-f3a1-11ea-20c6-01fd1464a592
 random_seam(m, n, i) = reduce((a, b) -> [a..., clamp(last(a) + rand(-1:1), 1, n)], 1:m-1; init=[i])
 
+# ╔═╡ 564c5ca2-0bde-11eb-0ea4-4fe14829e4ef
+my_arr = [3, 5, 1, 2, 4]
+
+# ╔═╡ ba837728-0be3-11eb-032e-67331a26fc48
+findmin(my_arr)
+
+# ╔═╡ c4a6a982-0bdc-11eb-0ac3-57994fceca60
+argmin(@view my_arr[2:4])
+
 # ╔═╡ abf20aa0-f31b-11ea-2548-9bea4fab4c37
 function greedy_seam(energies, starting_pixel::Int)
 	# you can delete the body of this function - it's just a placeholder.
 	random_seam(size(energies)..., starting_pixel)
+	seam = zeros(Int, size(energies,1))
+	seam[1] = starting_pixel
+	min_pix_pos = starting_pixel
+	for i in 2:size(energies,1)
+		relative_index = argmin(@view energies[i, max(min_pix_pos-1, 1):min(min_pix_pos+1, size(energies,2))])
+		if min_pix_pos == 1
+			seam[i] = min_pix_pos-1+relative_index
+			min_pix_pos = min_pix_pos-1+relative_index
+		else
+			seam[i] = min_pix_pos-2+relative_index
+			min_pix_pos = min_pix_pos-2+relative_index
+		end
+	end
+	return seam
 end
 
 # ╔═╡ 5430d772-f397-11ea-2ed8-03ee06d02a22
@@ -401,6 +434,15 @@ which is one of $j-1$, $j$ or $j+1$, up to boundary conditions.
 Return these two values in a tuple.
 """
 
+# ╔═╡ e97354d8-0fad-11eb-363f-29a754966ec0
+te =5 .+ [-1, 0, 1]
+
+# ╔═╡ 83ac3aec-0fb1-11eb-10d9-07ef58b2d6a9
+te[3]
+
+# ╔═╡ ac47bf8a-0fb1-11eb-06ed-75b770bf1342
+maximum([1,te[3]])
+
 # ╔═╡ 8ec27ef8-f320-11ea-2573-c97b7b908cb7
 ## returns lowest possible sum energy at pixel (i, j), and the column to jump to in row i+1.
 function least_energy(energies, i, j)
@@ -411,6 +453,27 @@ function least_energy(energies, i, j)
 	#
 	# induction
 	# combine results from recursive calls to `least_energy`.
+	if i == size(energies,1)
+		return (energies[i,j], 0)
+	end
+	if i == 1
+		println("Start least_energy")
+		m, n = size(energies)
+		println("rows")
+		println(m)
+		print("columns")
+		println(n)
+	end
+	pot_cols = j .+ [-1, 0, 1]
+	pot_cols[1] = maximum([1, pot_cols[1]])
+	pot_cols[3] = minimum([size(energies, 2), pot_cols[3]])
+	println("my pot col")
+	println(pot_cols)
+	rel_idx = argmin(@view energies[i+1, pot_cols[1]:pot_cols[3]])
+	println("my rel idx")
+	println(rel_idx)
+	min_energy = least_energy(energies, i+1, pot_cols[rel_idx])[1]
+	return (energies[i,j]+min_energy, pot_cols[rel_idx])
 end
 
 # ╔═╡ a7f3d9f8-f3bb-11ea-0c1a-55bbb8408f09
@@ -445,11 +508,24 @@ Now use the `least_energy` function you defined above to define the `recursive_s
 This will give you the method used in the lecture to perform [exhaustive search of all possible paths](https://youtu.be/rpB6zQNsbQU?t=839).
 """
 
+# ╔═╡ 1986864e-0fb7-11eb-35fd-3368ed40790c
+for something in 1:5
+	println(something)
+end
+
 # ╔═╡ 85033040-f372-11ea-2c31-bb3147de3c0d
 function recursive_seam(energies, starting_pixel)
 	m, n = size(energies)
 	# Replace the following line with your code.
-	[rand(1:starting_pixel) for i=1:m]
+	seam = zeros(Int, m)
+	seam[1] = starting_pixel
+	for i in 1:m-1
+		sum_energy, c = least_energy(energies, i, seam[i])
+		seam[i+1] = c
+		println("my recursive seam")
+		println(seam)
+	end
+	return seam
 end
 
 # ╔═╡ 1d55333c-f393-11ea-229a-5b1e9cabea6a
@@ -837,6 +913,7 @@ bigbreak
 # ╟─85cfbd10-f384-11ea-31dc-b5693630a4c5
 # ╠═33e43c7c-f381-11ea-3abc-c942327456b1
 # ╟─938185ec-f384-11ea-21dc-b56b7469f798
+# ╠═5ab27f94-0bd2-11eb-29fe-194d67235f67
 # ╠═86e1ee96-f314-11ea-03f6-0f549b79e7c9
 # ╠═a4937996-f314-11ea-2ff9-615c888afaa8
 # ╠═0d144802-f319-11ea-0028-cd97a776a3d0
@@ -851,6 +928,7 @@ bigbreak
 # ╟─59991872-f366-11ea-1036-afe313fb4ec1
 # ╠═e501ea28-f326-11ea-252a-53949fd9ef57
 # ╟─f7915918-f366-11ea-2c46-2f4671ae8a22
+# ╠═003370de-0bd0-11eb-0a59-ef7ba2ac80a7
 # ╠═37d4ea5c-f327-11ea-2cc5-e3774c232c2b
 # ╠═67717d02-f327-11ea-0988-bfe661f57f77
 # ╟─9e149cd2-f367-11ea-28ef-b9533e8a77bb
@@ -885,7 +963,10 @@ bigbreak
 # ╟─8ba9f5fc-f31b-11ea-00fe-79ecece09c25
 # ╟─f5a74dfc-f388-11ea-2577-b543d31576c6
 # ╟─c3543ea4-f393-11ea-39c8-37747f113b96
-# ╟─2f9cbea8-f3a1-11ea-20c6-01fd1464a592
+# ╠═2f9cbea8-f3a1-11ea-20c6-01fd1464a592
+# ╠═564c5ca2-0bde-11eb-0ea4-4fe14829e4ef
+# ╠═ba837728-0be3-11eb-032e-67331a26fc48
+# ╠═c4a6a982-0bdc-11eb-0ac3-57994fceca60
 # ╠═abf20aa0-f31b-11ea-2548-9bea4fab4c37
 # ╟─5430d772-f397-11ea-2ed8-03ee06d02a22
 # ╟─f580527e-f397-11ea-055f-bb9ea8f12015
@@ -903,6 +984,9 @@ bigbreak
 # ╟─9101d5a0-f371-11ea-1c04-f3f43b96ca4a
 # ╠═ddba07dc-f3b7-11ea-353e-0f67713727fc
 # ╠═73b52fd6-f3b9-11ea-14ed-ebfcab1ce6aa
+# ╠═e97354d8-0fad-11eb-363f-29a754966ec0
+# ╠═83ac3aec-0fb1-11eb-10d9-07ef58b2d6a9
+# ╠═ac47bf8a-0fb1-11eb-06ed-75b770bf1342
 # ╠═8ec27ef8-f320-11ea-2573-c97b7b908cb7
 # ╟─9f18efe2-f38e-11ea-0871-6d7760d0b2f6
 # ╟─a7f3d9f8-f3bb-11ea-0c1a-55bbb8408f09
@@ -910,6 +994,7 @@ bigbreak
 # ╟─18e0fd8a-f3bc-11ea-0713-fbf74d5fa41a
 # ╟─cbf29020-f3ba-11ea-2cb0-b92836f3d04b
 # ╟─8bc930f0-f372-11ea-06cb-79ced2834720
+# ╠═1986864e-0fb7-11eb-35fd-3368ed40790c
 # ╠═85033040-f372-11ea-2c31-bb3147de3c0d
 # ╠═1d55333c-f393-11ea-229a-5b1e9cabea6a
 # ╠═d88bc272-f392-11ea-0efd-15e0e2b2cd4e
