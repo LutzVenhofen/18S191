@@ -1,9 +1,13 @@
 ### A Pluto.jl notebook ###
 <<<<<<< HEAD
+<<<<<<< HEAD
 # v0.11.14
 =======
 # v0.11.13
 >>>>>>> 4ad57d44b145cdf20682124bbc9f8cd880122540
+=======
+# v0.11.13
+>>>>>>> 7c5050202ebeb448081c29b17ddb1751767e0075
 
 using Markdown
 using InteractiveUtils
@@ -36,7 +40,11 @@ Feel free to ask questions!
 # ╔═╡ 911ccbce-ed68-11ea-3606-0384e7580d7c
 # edit the code below to set your name and kerberos ID (i.e. email without @mit.edu)
 
+<<<<<<< HEAD
 student = (name = "Lutz Venhofen", kerberos_id = "What")
+=======
+student = (name = "Jazzy Doe", kerberos_id = "jazz")
+>>>>>>> 7c5050202ebeb448081c29b17ddb1751767e0075
 
 # press the ▶ button in the bottom right of this cell to run your edits
 # or use Shift+Enter
@@ -57,7 +65,10 @@ md"_Let's create a package environment:_"
 begin
 	import Pkg
 	Pkg.activate(mktempdir())
+<<<<<<< HEAD
 	Pkg.add("Distributions")
+=======
+>>>>>>> 7c5050202ebeb448081c29b17ddb1751767e0075
 end
 
 # ╔═╡ 74b008f6-ed6b-11ea-291f-b3791d6d1b35
@@ -92,19 +103,28 @@ md"#### Exerise 1.1
 "
 
 # ╔═╡ f51333a6-eded-11ea-34e6-bfbb3a69bcb0
+<<<<<<< HEAD
 random_vect = rand(Float64, 10) # replace this with your code!
+=======
+random_vect = missing # replace this with your code!
+>>>>>>> 7c5050202ebeb448081c29b17ddb1751767e0075
 
 # ╔═╡ cf738088-eded-11ea-2915-61735c2aa990
 md"👉 Make a function `mean` using a `for` loop, which computes the mean/average of a vector of numbers."
 
 # ╔═╡ 0ffa8354-edee-11ea-2883-9d5bfea4a236
 function mean(x)
+<<<<<<< HEAD
 	total = 0
 	for i in x
 		total += i
 	end
 	av = total/length(x)
 	return av
+=======
+	
+	return missing
+>>>>>>> 7c5050202ebeb448081c29b17ddb1751767e0075
 end
 
 # ╔═╡ 1f104ce4-ee0e-11ea-2029-1d9c817175af
@@ -114,13 +134,18 @@ mean([1, 2, 3])
 md"👉 Define `m` to be the mean of `random_vect`."
 
 # ╔═╡ 2a391708-edee-11ea-124e-d14698171b68
+<<<<<<< HEAD
 m = mean(random_vect)
+=======
+m = missing
+>>>>>>> 7c5050202ebeb448081c29b17ddb1751767e0075
 
 # ╔═╡ e2863d4c-edef-11ea-1d67-332ddca03cc4
 md"""👉 Write a function `demean`, which takes a vector `x` and subtracts the mean from each value in `x`."""
 
 # ╔═╡ ec5efe8c-edef-11ea-2c6f-afaaeb5bc50c
 function demean(x)
+<<<<<<< HEAD
 	m = mean(x)
 	return x .- m
 end
@@ -134,6 +159,12 @@ testing .-mean(testing)
 # ╔═╡ 870006b0-f35f-11ea-04ae-b3aabde1c93a
 [0 for i in 1:100]
 
+=======
+	
+	return missing
+end
+
+>>>>>>> 7c5050202ebeb448081c29b17ddb1751767e0075
 # ╔═╡ 29e10640-edf0-11ea-0398-17dbf4242de3
 md"Let's check that the mean of the `demean(random_vect)` is 0:
 
@@ -162,9 +193,14 @@ md"""
 
 # ╔═╡ b6b65b94-edf0-11ea-3686-fbff0ff53d08
 function create_bar()
+<<<<<<< HEAD
 	v = [0 for i in 1:100]
 	v[40:60] .= 1
 	return v
+=======
+	
+	return missing
+>>>>>>> 7c5050202ebeb448081c29b17ddb1751767e0075
 end
 
 # ╔═╡ 22f28dae-edf2-11ea-25b5-11c369ae1253
@@ -176,9 +212,14 @@ md"""
 
 # ╔═╡ 8c19fb72-ed6c-11ea-2728-3fa9219eddc4
 function vecvec_to_matrix(vecvec)
+<<<<<<< HEAD
 	vecvec_unfolded = [vecvec[i][j] for i in 1:length(vecvec) for j in 1:length(vecvec[i])]
 	m = reshape(vecvec_unfolded, length(vecvec), length(vecvec[1]))
 	return m
+=======
+	
+	return missing
+>>>>>>> 7c5050202ebeb448081c29b17ddb1751767e0075
 end
 
 # ╔═╡ c4761a7e-edf2-11ea-1e75-118e73dadbed
@@ -193,6 +234,7 @@ md"""
 
 # ╔═╡ 9f1c6d04-ed6c-11ea-007b-75e7e780703d
 function matrix_to_vecvec(matrix)
+<<<<<<< HEAD
 	vv = []
 	for i in 1:size(matrix)[1]
 		v = []
@@ -202,11 +244,16 @@ function matrix_to_vecvec(matrix)
 		push!(vv, v)
 	end
 	return vv
+=======
+	
+	return missing
+>>>>>>> 7c5050202ebeb448081c29b17ddb1751767e0075
 end
 
 # ╔═╡ 70955aca-ed6e-11ea-2330-89b4d20b1795
 matrix_to_vecvec([6 7; 8 9])
 
+<<<<<<< HEAD
 # ╔═╡ 6feb71a0-f36c-11ea-3a0d-8d3add99f760
 begin
 	any_vv = []
@@ -229,6 +276,8 @@ for i in test_m[1]
 	println(i)
 end
 
+=======
+>>>>>>> 7c5050202ebeb448081c29b17ddb1751767e0075
 # ╔═╡ 5da8cbe8-eded-11ea-2e43-c5b7cc71e133
 begin
 	colored_line(x::Vector{<:Real}) = Gray.(Float64.((hcat(x)')))
@@ -257,9 +306,12 @@ Let's load a picture of Philip again.
 # ╔═╡ c5484572-ee05-11ea-0424-f37295c3072d
 philip_file = download("https://i.imgur.com/VGPeJ6s.jpg")
 
+<<<<<<< HEAD
 # ╔═╡ 6506c5dc-f425-11ea-2dfc-7dfaa4ddecaf
 sum([1,2,3])
 
+=======
+>>>>>>> 7c5050202ebeb448081c29b17ddb1751767e0075
 # ╔═╡ e86ed944-ee05-11ea-3e0f-d70fc73b789c
 md"_Hi there Philip_"
 
@@ -271,6 +323,7 @@ md"""
 
 # ╔═╡ f6898df6-ee07-11ea-2838-fde9bc739c11
 function mean_colors(image)
+<<<<<<< HEAD
 	r = sum(image[i,j].r for i in 1:size(image)[1] for j in 1:size(image)[2])/length(image)
 	g = sum(image[i,j].g for i in 1:size(image)[1] for j in 1:size(image)[2])/length(image)
 	b = sum(image[i,j].b for i in 1:size(image)[1] for j in 1:size(image)[2])/length(image)
@@ -279,6 +332,14 @@ end
 
 # ╔═╡ d75ec078-ee0d-11ea-3723-71fb8eecb040
 floor(0.43, digits=1)
+=======
+	
+	return missing
+end
+
+# ╔═╡ d75ec078-ee0d-11ea-3723-71fb8eecb040
+
+>>>>>>> 7c5050202ebeb448081c29b17ddb1751767e0075
 
 # ╔═╡ f68d4a36-ee07-11ea-0832-0360530f102e
 md"""
@@ -290,25 +351,41 @@ md"""
 begin
 	function quantize(x::Number)
 		
+<<<<<<< HEAD
 		return floor(x, digits=1)
 	end
 	
 	function quantize(color::AbstractRGB)
 		return RGB(quantize(color.r), quantize(color.g), quantize(color.b))
+=======
+		return missing
+	end
+	
+	function quantize(color::AbstractRGB)
+		# you will write me in a later exercise!
+		return missing
+>>>>>>> 7c5050202ebeb448081c29b17ddb1751767e0075
 	end
 	
 	function quantize(image::AbstractMatrix)
 		# you will write me in a later exercise!
+<<<<<<< HEAD
 		return quantize.(image)
+=======
+		return missing
+>>>>>>> 7c5050202ebeb448081c29b17ddb1751767e0075
 	end
 end
 
 # ╔═╡ f6a655f8-ee07-11ea-13b6-43ca404ddfc7
 quantize(0.267), quantize(0.91)
 
+<<<<<<< HEAD
 # ╔═╡ 0df55608-f427-11ea-1588-5907fdca856e
 RGB(1,0.5,1)
 
+=======
+>>>>>>> 7c5050202ebeb448081c29b17ddb1751767e0075
 # ╔═╡ f6b218c0-ee07-11ea-2adb-1968c4fd473a
 md"""
 #### Exercise 2.3
@@ -340,7 +417,12 @@ md"""
 
 # ╔═╡ 63e8d636-ee0b-11ea-173d-bd3327347d55
 function invert(color::AbstractRGB)
+<<<<<<< HEAD
 	return RGB(1-color.r, 1-color.g, 1-color.b)
+=======
+	
+	return missing
+>>>>>>> 7c5050202ebeb448081c29b17ddb1751767e0075
 end
 
 # ╔═╡ 2cc2f84e-ee0d-11ea-373b-e7ad3204bb00
@@ -361,6 +443,12 @@ invert(red)
 # ╔═╡ 846b1330-ee0b-11ea-3579-7d90fafd7290
 md"Can you invert the picture of Philip?"
 
+<<<<<<< HEAD
+=======
+# ╔═╡ 943103e2-ee0b-11ea-33aa-75a8a1529931
+philip_inverted = missing
+
+>>>>>>> 7c5050202ebeb448081c29b17ddb1751767e0075
 # ╔═╡ f6d6c71a-ee07-11ea-2b63-d759af80707b
 md"""
 #### Exercise 2.6
@@ -369,6 +457,7 @@ md"""
 
 # ╔═╡ f6e2cb2a-ee07-11ea-06ee-1b77e34c1e91
 begin
+<<<<<<< HEAD
 	function myclamp(x)
 		if 0 <= x <= 1
 			return x
@@ -382,15 +471,25 @@ begin
 		s = rand()*rand([-1,1])*s
 		new_x = x+s
 		return myclamp(new_x)
+=======
+	function noisify(x::Number, s)
+
+		return missing
+>>>>>>> 7c5050202ebeb448081c29b17ddb1751767e0075
 	end
 	
 	function noisify(color::AbstractRGB, s)
 		# you will write me in a later exercise!
+<<<<<<< HEAD
 		return RGB(noisify(color.r, s), noisify(color.g, s), noisify(color.b, s))
+=======
+		return missing
+>>>>>>> 7c5050202ebeb448081c29b17ddb1751767e0075
 	end
 	
 	function noisify(image::AbstractMatrix, s)
 		# you will write me in a later exercise!
+<<<<<<< HEAD
 		return noisify.(image, s)
 	end
 end
@@ -398,6 +497,12 @@ end
 # ╔═╡ c6edd31e-f428-11ea-23df-a7eafd31bb71
 rand()*rand([-1,1])*5
 
+=======
+		return missing
+	end
+end
+
+>>>>>>> 7c5050202ebeb448081c29b17ddb1751767e0075
 # ╔═╡ f6fc1312-ee07-11ea-39a0-299b67aee3d8
 md"""
 👉  Write the second method `noisify(c::AbstractRGB, s)` to add random noise of intensity $s$ to each of the $(r, g, b)$ values in a colour. 
@@ -452,6 +557,7 @@ philip = let
 	decimate(original, 8)
 end
 
+<<<<<<< HEAD
 # ╔═╡ 930c7e9e-f424-11ea-1347-09e858626d0b
 philip[1,2].r+philip[1,3].r
 
@@ -461,15 +567,20 @@ length(philip)
 # ╔═╡ 57d508ec-f425-11ea-04d0-bf7796f22305
 size(philip)[1]
 
+=======
+>>>>>>> 7c5050202ebeb448081c29b17ddb1751767e0075
 # ╔═╡ 5be9b144-ee0d-11ea-2a8d-8775de265a1d
 mean_colors(philip)
 
 # ╔═╡ 9751586e-ee0c-11ea-0cbb-b7eda92977c9
 quantize(philip)
 
+<<<<<<< HEAD
 # ╔═╡ 943103e2-ee0b-11ea-33aa-75a8a1529931
 philip_inverted = invert.(philip)
 
+=======
+>>>>>>> 7c5050202ebeb448081c29b17ddb1751767e0075
 # ╔═╡ ac15e0d0-ee0c-11ea-1eaf-d7f88b5df1d7
 noisify(philip, philip_noise)
 
@@ -517,7 +628,11 @@ You've seen some colored lines in this notebook to visualize arrays. Can you mak
 """
 
 # ╔═╡ 01070e28-ee0f-11ea-1928-a7919d452bdd
+<<<<<<< HEAD
 colored_line(v)
+=======
+
+>>>>>>> 7c5050202ebeb448081c29b17ddb1751767e0075
 
 # ╔═╡ 7522f81e-ee1c-11ea-35af-a17eb257ff1a
 md"Try changing `n` and `v` around. Notice that you can run the cell `v = rand(n)` again to regenerate new random values."
@@ -534,6 +649,7 @@ A better solution is to use the *closest* value that is inside the vector. Effec
 
 # ╔═╡ 802bec56-ee09-11ea-043e-51cf1db02a34
 function extend(v, i)
+<<<<<<< HEAD
 	if i in 1:length(v)
 		return v[i]
 	elseif i > length(v)
@@ -541,6 +657,10 @@ function extend(v, i)
 	else
 		return v[1]
 	end
+=======
+	
+	return missing
+>>>>>>> 7c5050202ebeb448081c29b17ddb1751767e0075
 end
 
 # ╔═╡ b7f3994c-ee1b-11ea-211a-d144db8eafc2
@@ -579,10 +699,15 @@ md"""
 
 # ╔═╡ 807e5662-ee09-11ea-3005-21fdcc36b023
 function blur_1D(v, l)
+<<<<<<< HEAD
 	blurred_v = [
 		sum(extend(v, j) for j in i-l:i+l)/(2*l+1) for i in 1:length(v)
 	]
 	return blurred_v
+=======
+	
+	return missing
+>>>>>>> 7c5050202ebeb448081c29b17ddb1751767e0075
 end
 
 # ╔═╡ 808deca8-ee09-11ea-0ee3-1586fa1ce282
@@ -608,6 +733,7 @@ md"""
 """
 
 # ╔═╡ ca1ac5f4-ee1c-11ea-3d00-ff5268866f87
+<<<<<<< HEAD
 @bind l_box Slider(1:1:20, show_value=true)
 
 # ╔═╡ bf843d4e-f431-11ea-3362-653190d276f8
@@ -618,6 +744,9 @@ colored_line(v)
 
 # ╔═╡ e0bf95c6-f431-11ea-30a9-1f2dd56d8fc5
 colored_line(blurred_v)
+=======
+
+>>>>>>> 7c5050202ebeb448081c29b17ddb1751767e0075
 
 # ╔═╡ 80ab64f4-ee09-11ea-29b4-498112ed0799
 md"""
@@ -635,10 +764,15 @@ Again, we need to take care about what happens if $v_{i -n }$ falls off the end 
 
 # ╔═╡ 28e20950-ee0c-11ea-0e0a-b5f2e570b56e
 function convolve_vector(v, k)
+<<<<<<< HEAD
 	l = (length(k) - 1) ÷ 2
 	# c_v = [sum(extend(v, j)*k[j-i+l+1] for j in i-l:i+l) for i in 1:length(v)]
 	c_v = [dot([extend(v,j) for j in i-l:i+l], k) for i in 1:length(v)]
 	return c_v
+=======
+	
+	return missing
+>>>>>>> 7c5050202ebeb448081c29b17ddb1751767e0075
 end
 
 # ╔═╡ 93284f92-ee12-11ea-0342-833b1a30625c
@@ -671,6 +805,7 @@ For simplicity you can take $\sigma=1$.
 
 # ╔═╡ 1c8b4658-ee0c-11ea-2ede-9b9ed7d3125e
 function gaussian_kernel(n)
+<<<<<<< HEAD
 	σ = 1
 	g_x(x) = (1/(2*π*σ^2))*exp(-(x^2)/(2*σ^2)) #1-D gauss function
 	_kernel = zeros(2*n + 1)
@@ -683,11 +818,21 @@ end
 # ╔═╡ fa2c92ae-f434-11ea-2c15-2d675ed37d10
 zeros(2*3+1)
 
+=======
+	
+	return missing
+end
+
+>>>>>>> 7c5050202ebeb448081c29b17ddb1751767e0075
 # ╔═╡ f8bd22b8-ee14-11ea-04aa-ab16fd01826e
 md"Let's test your kernel function!"
 
 # ╔═╡ 2a9dd06a-ee13-11ea-3f84-67bb309c77a8
+<<<<<<< HEAD
 gaussian_kernel_size_1D = 3# change this value, or turn me into a slider!
+=======
+gaussian_kernel_size_1D = 3 # change this value, or turn me into a slider!
+>>>>>>> 7c5050202ebeb448081c29b17ddb1751767e0075
 
 # ╔═╡ 38eb92f6-ee13-11ea-14d7-a503ac04302e
 test_gauss_1D_a = let
@@ -740,6 +885,7 @@ md"""
 
 # ╔═╡ 7c2ec6c6-ee15-11ea-2d7d-0d9401a5e5d1
 function extend_mat(M::AbstractMatrix, i, j)
+<<<<<<< HEAD
 	max_row, max_col = size(M)
 	if i < 1
 		return extend(M[1, :], j)
@@ -748,6 +894,10 @@ function extend_mat(M::AbstractMatrix, i, j)
 	else
 		return extend(M[i, :], j)
 	end
+=======
+	
+	return missing
+>>>>>>> 7c5050202ebeb448081c29b17ddb1751767e0075
 end
 
 # ╔═╡ 9afc4dca-ee16-11ea-354f-1d827aaa61d2
@@ -782,6 +932,7 @@ md"""
 
 # ╔═╡ 8b96e0bc-ee15-11ea-11cd-cfecea7075a0
 function convolve_image(M::AbstractMatrix, K::AbstractMatrix)
+<<<<<<< HEAD
 	con_M = Matrix{typeof(M[1,1])}(undef, size(M))
 	num_rows, num_columns = size(K)
 	max_k = num_rows ÷ 2
@@ -793,6 +944,10 @@ function convolve_image(M::AbstractMatrix, K::AbstractMatrix)
 		end
 	end
 	return con_M
+=======
+	
+	return missing
+>>>>>>> 7c5050202ebeb448081c29b17ddb1751767e0075
 end
 
 # ╔═╡ 5a5135c6-ee1e-11ea-05dc-eb0c683c2ce5
@@ -803,9 +958,15 @@ test_image_with_border = [get(small_image, (i, j), Gray(0)) for (i,j) in Iterato
 
 # ╔═╡ 275a99c8-ee1e-11ea-0a76-93e3618c9588
 K_test = [
+<<<<<<< HEAD
 	1/3   0  0
 	0 1/3  0
 	0   0  1/3
+=======
+	0   0  0
+	1/2 0  1/2
+	0   0  0
+>>>>>>> 7c5050202ebeb448081c29b17ddb1751767e0075
 ]
 
 # ╔═╡ 42dfa206-ee1e-11ea-1fcd-21671042064c
@@ -836,9 +997,12 @@ Here, the 2D Gaussian kernel will be defined as
 $$G(x,y)=\frac{1}{2\pi \sigma^2}e^{\frac{-(x^2+y^2)}{2\sigma^2}}$$
 """
 
+<<<<<<< HEAD
 # ╔═╡ b2e9823e-fcd2-11ea-352c-33e6cc65c09d
 
 
+=======
+>>>>>>> 7c5050202ebeb448081c29b17ddb1751767e0075
 # ╔═╡ aad67fd0-ee15-11ea-00d4-274ec3cda3a3
 function with_gaussian_blur(image)
 	
@@ -1318,7 +1482,11 @@ function camera_input(;max_size=200, default_url="https://i.imgur.com/SUmi94P.pn
 <script>
 	// based on https://github.com/fonsp/printi-static (by the same author)
 
+<<<<<<< HEAD
 	const span = this.currentScript.parentElement
+=======
+	const span = currentScript.parentElement
+>>>>>>> 7c5050202ebeb448081c29b17ddb1751767e0075
 	const video = span.querySelector("video")
 	const popout = span.querySelector("button#pop-out")
 	const stop = span.querySelector("button#stop")
@@ -1469,6 +1637,7 @@ sobel_camera_image = Gray.(process_raw_camera_data(sobel_raw_camera_data));
 # ╔═╡ 1bf94c00-ee19-11ea-0e3c-e12bc68d8e28
 with_sobel_edge_detect(sobel_camera_image)
 
+<<<<<<< HEAD
 # ╔═╡ e6da7166-f5b1-11ea-125d-e99b50929bf8
 begin
 	using LinearAlgebra
@@ -1482,6 +1651,8 @@ begin
 	using LinearAlgebra
 end
 
+=======
+>>>>>>> 7c5050202ebeb448081c29b17ddb1751767e0075
 # ╔═╡ Cell order:
 # ╠═83eb9ca0-ed68-11ea-0bc5-99a09c68f867
 # ╟─8ef13896-ed68-11ea-160b-3550eeabbd7d
@@ -1509,9 +1680,12 @@ end
 # ╟─2b1ccaca-edee-11ea-34b0-c51659f844d0
 # ╟─e2863d4c-edef-11ea-1d67-332ddca03cc4
 # ╠═ec5efe8c-edef-11ea-2c6f-afaaeb5bc50c
+<<<<<<< HEAD
 # ╠═58686222-f35f-11ea-2c05-151efc05e7b1
 # ╠═758eb1b0-f35f-11ea-0efc-bfbcd9342df8
 # ╠═870006b0-f35f-11ea-04ae-b3aabde1c93a
+=======
+>>>>>>> 7c5050202ebeb448081c29b17ddb1751767e0075
 # ╟─29e10640-edf0-11ea-0398-17dbf4242de3
 # ╟─6f67657e-ee1a-11ea-0c2f-3d567bcfa6ea
 # ╠═38155b5a-edf0-11ea-3e3f-7163da7433fb
@@ -1527,21 +1701,28 @@ end
 # ╟─393667ca-edf2-11ea-09c5-c5d292d5e896
 # ╠═9f1c6d04-ed6c-11ea-007b-75e7e780703d
 # ╠═70955aca-ed6e-11ea-2330-89b4d20b1795
+<<<<<<< HEAD
 # ╠═6feb71a0-f36c-11ea-3a0d-8d3add99f760
 # ╟─e06b7fbc-edf2-11ea-1708-fb32599dded3
 # ╠═e9792340-f368-11ea-340a-8da49b2d8242
 # ╠═667e4b90-f369-11ea-08bc-c956bcc4b706
 # ╠═8e417980-f36a-11ea-1e61-f735de19e938
 # ╠═f64cd440-f368-11ea-2957-85e63b2229e9
+=======
+# ╟─e06b7fbc-edf2-11ea-1708-fb32599dded3
+>>>>>>> 7c5050202ebeb448081c29b17ddb1751767e0075
 # ╟─5da8cbe8-eded-11ea-2e43-c5b7cc71e133
 # ╟─45815734-ee0a-11ea-2982-595e1fc0e7b1
 # ╟─e083b3e8-ed61-11ea-2ec9-217820b0a1b4
 # ╠═c5484572-ee05-11ea-0424-f37295c3072d
 # ╠═c8ecfe5c-ee05-11ea-322b-4b2714898831
+<<<<<<< HEAD
 # ╠═930c7e9e-f424-11ea-1347-09e858626d0b
 # ╠═d1cb59ba-f424-11ea-3e8f-afc08750cc67
 # ╠═57d508ec-f425-11ea-04d0-bf7796f22305
 # ╠═6506c5dc-f425-11ea-2dfc-7dfaa4ddecaf
+=======
+>>>>>>> 7c5050202ebeb448081c29b17ddb1751767e0075
 # ╟─e86ed944-ee05-11ea-3e0f-d70fc73b789c
 # ╟─c54ccdea-ee05-11ea-0365-23aaf053b7d7
 # ╠═f6898df6-ee07-11ea-2838-fde9bc739c11
@@ -1551,7 +1732,10 @@ end
 # ╟─f68d4a36-ee07-11ea-0832-0360530f102e
 # ╠═f6991a50-ee07-11ea-0bc4-1d68eb028e6a
 # ╠═f6a655f8-ee07-11ea-13b6-43ca404ddfc7
+<<<<<<< HEAD
 # ╠═0df55608-f427-11ea-1588-5907fdca856e
+=======
+>>>>>>> 7c5050202ebeb448081c29b17ddb1751767e0075
 # ╟─c905b73e-ee1a-11ea-2e36-23b8e73bfdb6
 # ╟─f6b218c0-ee07-11ea-2adb-1968c4fd473a
 # ╟─f6bf64da-ee07-11ea-3efb-05af01b14f67
@@ -1568,7 +1752,10 @@ end
 # ╠═943103e2-ee0b-11ea-33aa-75a8a1529931
 # ╟─f6d6c71a-ee07-11ea-2b63-d759af80707b
 # ╠═f6e2cb2a-ee07-11ea-06ee-1b77e34c1e91
+<<<<<<< HEAD
 # ╠═c6edd31e-f428-11ea-23df-a7eafd31bb71
+=======
+>>>>>>> 7c5050202ebeb448081c29b17ddb1751767e0075
 # ╟─f6ef2c2e-ee07-11ea-13a8-2512e7d94426
 # ╟─f6fc1312-ee07-11ea-39a0-299b67aee3d8
 # ╟─774b4ce6-ee1b-11ea-2b48-e38ee25fc89b
@@ -1608,6 +1795,7 @@ end
 # ╟─808deca8-ee09-11ea-0ee3-1586fa1ce282
 # ╟─809f5330-ee09-11ea-0e5b-415044b6ac1f
 # ╠═ca1ac5f4-ee1c-11ea-3d00-ff5268866f87
+<<<<<<< HEAD
 # ╠═bf843d4e-f431-11ea-3362-653190d276f8
 # ╠═da020f16-f431-11ea-0afe-7f04c95d1349
 # ╠═e0bf95c6-f431-11ea-30a9-1f2dd56d8fc5
@@ -1616,6 +1804,11 @@ end
 # ╠═8c912488-f5b2-11ea-078e-a72984decf98
 # ╠═28e20950-ee0c-11ea-0e0a-b5f2e570b56e
 # ╠═e6da7166-f5b1-11ea-125d-e99b50929bf8
+=======
+# ╟─ea435e58-ee11-11ea-3785-01af8dd72360
+# ╟─80ab64f4-ee09-11ea-29b4-498112ed0799
+# ╠═28e20950-ee0c-11ea-0e0a-b5f2e570b56e
+>>>>>>> 7c5050202ebeb448081c29b17ddb1751767e0075
 # ╟─e9aadeee-ee1d-11ea-3525-95f6ba5fda31
 # ╟─5eea882c-ee13-11ea-0d56-af81ecd30a4a
 # ╠═93284f92-ee12-11ea-0342-833b1a30625c
@@ -1623,7 +1816,10 @@ end
 # ╟─7ffd14f8-ee1d-11ea-0343-b54fb0333aea
 # ╟─80b7566a-ee09-11ea-3939-6fab470f9ec8
 # ╠═1c8b4658-ee0c-11ea-2ede-9b9ed7d3125e
+<<<<<<< HEAD
 # ╠═fa2c92ae-f434-11ea-2c15-2d675ed37d10
+=======
+>>>>>>> 7c5050202ebeb448081c29b17ddb1751767e0075
 # ╟─f8bd22b8-ee14-11ea-04aa-ab16fd01826e
 # ╠═2a9dd06a-ee13-11ea-3f84-67bb309c77a8
 # ╟─b424e2aa-ee14-11ea-33fa-35491e0b9c9d
@@ -1654,7 +1850,10 @@ end
 # ╠═e7f8b41a-ee25-11ea-287a-e75d33fbd98b
 # ╟─8a335044-ee19-11ea-0255-b9391246d231
 # ╠═7c50ea80-ee15-11ea-328f-6b4e4ff20b7e
+<<<<<<< HEAD
 # ╠═b2e9823e-fcd2-11ea-352c-33e6cc65c09d
+=======
+>>>>>>> 7c5050202ebeb448081c29b17ddb1751767e0075
 # ╠═aad67fd0-ee15-11ea-00d4-274ec3cda3a3
 # ╟─8ae59674-ee18-11ea-3815-f50713d0fa08
 # ╟─94c0798e-ee18-11ea-3212-1533753eabb6

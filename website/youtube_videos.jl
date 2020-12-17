@@ -21,4 +21,27 @@ videos = Dict(
               "structure"    => "ConoBmjlivs",
               "macros-intro" => "e6LGMeoQhfs",
               "understanding-data" => "KrQV6mZ8hvI",
+<<<<<<< HEAD
+=======
+              "introspection" => "IuOXXQR7dAo",
+              "covid-data" => "m1dmT-31Qwc",
+              "dataframes" => "Pt8Iz4Udg2E",
+              "functions-are-objects" => "_O-HBDZMLrM",
+              "covid-live" => "Yx055xdSkx0",
+              "computational-illustrated" => "6bBFkBCzwh4",
+              "matrix-graphs" => "zxHVpNnFt1U",
+              "verbs-nouns" => "LvoLXE0U5og",
+              "grant-epidemic" => "ErO_Hy01X98",
+              "r0"           => "VNo5WrKZ8Yc",
+              "self-doc"     => "MQoE69CbfHo",
+              "paramtypes"   => "2WVFvRfocjI",
+              "raytracing1"  => "MkkZb5V6HqM",
+              "byop"         => "dczkYlOM2sg",
+              "what-is-array" => "gUZVpMUY4qY",
+              "raytracing2" => "JwyQezsQkkw",
+              "resistors"   => "UKG-xk2F3Ak",
+              "hier-thinking" => "rJyJZ_fMy9Q",
+              "pde-schemes" => "f7g1LTfNmnA",
+              "multigrid" => "rRCGNvMdLEY",
+>>>>>>> 7c5050202ebeb448081c29b17ddb1751767e0075
 )
